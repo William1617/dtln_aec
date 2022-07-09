@@ -104,7 +104,7 @@ void DTLNAEC() {
                 m_pEngine->mic_buffer[n+BLOCK_LEN-BLOCK_SHIFT]=inputmicfile.samples[0][n+i*BLOCK_SHIFT];
                 m_pEngine->lpb_buffer[n+BLOCK_LEN-BLOCK_SHIFT]=inputlpbfile.samples[0][n+i*BLOCK_SHIFT];
             } 
-        DTLNAECInfer();
+        DTLNAECInfer(m_pEngine);
         memcpy(f32_output, m_pEngine->out_buffer, BLOCK_LEN * sizeof(float));
         for(int j=0;j<BLOCK_SHIFT;j++){
             testaecdata.push_back(f32_output[j]);    //for one forward process save first BLOCK_SHIFT model output samples
@@ -115,7 +115,7 @@ void DTLNAEC() {
 
  }
  
-void DTLNAECInfer() {
+void DTLNAECInfer(trg_engine* m_pEngine) {
 
 	float in_mag[BLOCK_LEN / 2 + 1] = { 0 };
     float in_phase[BLOCK_LEN / 2 + 1] = { 0 };
@@ -128,15 +128,14 @@ void DTLNAECInfer() {
     double lpb_in[BLOCK_LEN];
     std::vector<cpx_type> lpb_res(BLOCK_LEN);
 
-	std::vector<size_t> shape;
+    std::vector<size_t> shape;
     shape.push_back(BLOCK_LEN);
     std::vector<size_t> axes;
     axes.push_back(0);
     std::vector<ptrdiff_t> stridel, strideo;
     strideo.push_back(sizeof(cpx_type));
     stridel.push_back(sizeof(double));
-
-	for (int i = 0; i < BLOCK_LEN; i++){
+    for (int i = 0; i < BLOCK_LEN; i++){
         fft_in[i] = m_pEngine->mic_buffer[i];
 	}
     for(int j =0;j<BLOCK_LEN;j++){
