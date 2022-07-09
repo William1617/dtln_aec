@@ -65,7 +65,7 @@ void DTLNAEC() {
     }
     
     //input wav data of first model
-	m_pEngine->input_details_a[0] = TfLiteInterpreterGetInputTensor(m_pEngine->interpreter_a, 0);
+    m_pEngine->input_details_a[0] = TfLiteInterpreterGetInputTensor(m_pEngine->interpreter_a, 0);
     //input state data of first model
     m_pEngine->input_details_a[1] = TfLiteInterpreterGetInputTensor(m_pEngine->interpreter_a, 1);
     //lpbinput
