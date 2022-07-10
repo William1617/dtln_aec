@@ -117,7 +117,7 @@ void DTLNAEC() {
  
 void DTLNAECInfer(trg_engine* m_pEngine) {
 
-	float in_mag[BLOCK_LEN / 2 + 1] = { 0 };
+    float in_mag[BLOCK_LEN / 2 + 1] = { 0 };
     float in_phase[BLOCK_LEN / 2 + 1] = { 0 };
     float estimated_block[BLOCK_LEN];
     
@@ -143,7 +143,7 @@ void DTLNAECInfer(trg_engine* m_pEngine) {
     }
     
     //apply FFT to input wav data
-	pocketfft::r2c(shape, stridel, strideo, axes, pocketfft::FORWARD, fft_in, fft_res.data(), 1.0);
+    pocketfft::r2c(shape, stridel, strideo, axes, pocketfft::FORWARD, fft_in, fft_res.data(), 1.0);
 	__calc_mag_phase(fft_res, in_mag, in_phase, FFT_OUT_SIZE);
     pocketfft::r2c(shape, stridel, strideo, axes, pocketfft::FORWARD, lpb_in,lpb_res.data(), 1.0);
 	__calc_mag_phase(lpb_res, lpb_mag, lpb_phase, FFT_OUT_SIZE);
