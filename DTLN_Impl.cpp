@@ -4,6 +4,10 @@
 #include "pocketfft_hdronly.h"
 #include "AudioFile.h"
 
+using namespace std;
+
+typedef complex<double> cpx_type;
+
 
 void ExportWAV(
         const std::string & Filename, 
@@ -35,8 +39,8 @@ void DTLNAEC() {
     m_pEngine = new trg_engine;
 
 	// load model
-	m_pEngine->model_a = TfLiteModelCreateFromFile(DTLNModelNameA);
-	m_pEngine->model_b = TfLiteModelCreateFromFile(DTLNModelNameB);
+    m_pEngine->model_a = TfLiteModelCreateFromFile(DTLNModelNameA);
+    m_pEngine->model_b = TfLiteModelCreateFromFile(DTLNModelNameB);
 
     // Build the interpreter
     TfLiteInterpreterOptions* options = TfLiteInterpreterOptionsCreate();
