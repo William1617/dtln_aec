@@ -1,16 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-This File contains everything to train the DTLN model.
-
-For running the training see "run_training.py".
-To run evaluation with the provided pretrained model see "run_evaluation.py".
-
-Author: Nils L. Westhausen (nils.westhausen@uol.de)
-Version: 24.06.2020
-
-This code is licensed under the terms of the MIT-license.
-"""
-
 
 import os, fnmatch
 from time import time
