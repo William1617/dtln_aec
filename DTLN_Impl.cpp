@@ -109,9 +109,8 @@ void DTLNAEC() {
                 m_pEngine->lpb_buffer[n+BLOCK_LEN-BLOCK_SHIFT]=inputlpbfile.samples[0][n+i*BLOCK_SHIFT];
             } 
         DTLNAECInfer(m_pEngine);
-        memcpy(f32_output, m_pEngine->out_buffer, BLOCK_LEN * sizeof(float));
         for(int j=0;j<BLOCK_SHIFT;j++){
-            testaecdata.push_back(f32_output[j]);    //for one forward process save first BLOCK_SHIFT model output samples
+            testaecdata.push_back(m_pEngine->out_buffer[j]);    //for one forward process save first BLOCK_SHIFT model output samples
         }
     }
     ExportWAV("aectest.wav",testaecdata,SAMEPLERATE);
