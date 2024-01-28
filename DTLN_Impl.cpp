@@ -114,6 +114,11 @@ void DTLNAEC() {
         }
     }
     ExportWAV("aectest.wav",testaecdata,SAMEPLERATE);
+    TfLiteInterpreterDelete(m_pEngine->interpreter_a);
+    TfLiteInterpreterDelete(m_pEngine->interpreter_b);
+    TfLiteInterpreterOptionsDelete(options);
+    TfLiteModelDelete(m_pEngine->model_a);
+    TfLiteModelDelete(m_pEngine->model_b);
 
 
  }
