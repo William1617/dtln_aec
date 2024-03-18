@@ -119,6 +119,7 @@ void DTLNAEC() {
     TfLiteInterpreterOptionsDelete(options);
     TfLiteModelDelete(m_pEngine->model_a);
     TfLiteModelDelete(m_pEngine->model_b);
+    delete m_pEngine;
 
 
  }
